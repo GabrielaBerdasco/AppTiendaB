@@ -1,12 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import ShopNavigator from './navigation/ShopNavigator';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hola!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ShopNavigator />
   );
 }
 

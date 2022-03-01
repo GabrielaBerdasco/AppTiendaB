@@ -1,12 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-function CategoriesScreen({ }) {
+function CategoriesScreen({ navigation }) {
+    const handlePress = () => {
+        navigation.navigate('Products')
+    }
+
     return (
         <View style={styles.screen} >
             <Text>
                 Categories Screen
             </Text>
+            <Button 
+                onPress={handlePress}
+                title="Ir a productos"
+            />
         </View>
     )
 }
