@@ -1,0 +1,45 @@
+import React from "react"
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { Colors } from "../constants/Colors"
+
+function GridItems({ item, onSelected }) {
+
+    return (
+        <View style={{ ...styles.gridItem, backgroundColor: item.color }}>
+            <TouchableOpacity
+            style={styles.container}
+            onPress={ () => onSelected(item) }
+            >
+                <View>
+                    <Text style={styles.title}>{item.title}</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    gridItem:{
+        flex: 1,
+        borderRadius: 5,
+        margin: 15,
+        height: 150,
+    },
+    container:{
+        flex: 1,
+        borderRadius: 5,
+        shadowColor: Colors.accent,
+        shadowOpacity: 0.25,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 3,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        padding: 8,
+    },
+    title:{
+        textAlign: 'justify'
+    }
+})
+
+export default GridItems

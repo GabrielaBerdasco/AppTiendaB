@@ -1,4 +1,4 @@
-[
+export const products = [
     {
         id: "1",
         imagen: "https://dl.dropboxusercontent.com/s/ig08109teihkjv1/YerberaNegra.jpeg?dl=0",

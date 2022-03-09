@@ -17,8 +17,7 @@ function ShopNavigator() {
             initialRouteName="Categories"
             screenOptions={{
                 headerStyle: styles.header,
-                headerTitleStyle: styles.headerTitle,
-
+                headerTitleStyle: styles.headerTitle
             }}
             >
                 <Stack.Screen 
