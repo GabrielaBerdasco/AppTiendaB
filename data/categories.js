@@ -7,11 +7,11 @@ export const CATEGORIES = [
     {
         id: "2",
         title: "Accesorios",
-        color: "#fff496"
+        color: "#a29fd1"
     },
     {
         id: "3",
         title: "Esencias y Velas",
-        color: "#ff674d"
+        color: "#cdc7e5"
     }
 ]

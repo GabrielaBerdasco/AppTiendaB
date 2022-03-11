@@ -30,7 +30,13 @@ function ShopNavigator() {
                     title: 'Tienda B',
                 }}
                 />
-                <Stack.Screen name="Products" component={ProductsScreen} />
+                <Stack.Screen 
+                    name="Products" 
+                    component={ProductsScreen} 
+                    options={({ route }) => ({
+                        title: route.params.name,
+                    })}    
+                />
                 <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
             </Stack.Navigator>
         </NavigationContainer>
@@ -43,8 +49,8 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         fontWeight: 'bold',
-        fontSize: 28,
-        color: Colors.primary
+        fontSize: 20,
+        color: Colors.textColor
     }
 })
 

@@ -4,16 +4,18 @@ import GridItems from "../components/GridItems";
 import { CATEGORIES } from "../data/categories"
 
 function CategoriesScreen({ navigation }) {
-    const handlePress = () => {
-        navigation.navigate('Products')
+    const handlePress = (item) => {
+        navigation.navigate('Products', {
+            name: item.title,
+        })
     }
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item }) => (
         <GridItems 
             item={item}
             onSelected={handlePress}
         />
-    }
+    )
 
     return (
         <FlatList 
