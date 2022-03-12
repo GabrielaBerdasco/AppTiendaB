@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -12,15 +11,14 @@ const Stack = createNativeStackNavigator()
 
 function ShopNavigator() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator 
+        <Stack.Navigator 
             initialRouteName="Categories"
             screenOptions={{
                 headerStyle: styles.header,
                 headerTitleStyle: styles.headerTitle
             }}
-            >
-                <Stack.Screen 
+        >
+            <Stack.Screen 
                 name="Categories" 
                 component={CategoriesScreen} 
                 options={{
@@ -29,23 +27,22 @@ function ShopNavigator() {
                     },
                     title: 'Tienda B',
                 }}
-                />
-                <Stack.Screen 
-                    name="Products" 
-                    component={ProductsScreen} 
-                    options={({ route }) => ({
-                        title: route.params.name,
-                    })}    
-                />
-                <Stack.Screen 
-                    name="ProductDetail" 
-                    component={ProductDetailScreen} 
-                    options={({ route }) => ({
-                        title: route.params.name,
-                    })}     
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+            />
+            <Stack.Screen 
+                name="Products" 
+                component={ProductsScreen} 
+                options={({ route }) => ({
+                    title: route.params.name,
+                })}    
+            />
+            <Stack.Screen 
+                name="ProductDetail" 
+                component={ProductDetailScreen} 
+                options={({ route }) => ({
+                    title: route.params.name,
+                })}     
+            />
+        </Stack.Navigator>
     )
 }
 
