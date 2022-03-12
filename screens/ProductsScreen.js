@@ -1,19 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import ProductItem from "../components/ProductItem";
+import { View, FlatList, StyleSheet } from "react-native";
+import { PRODUCTS } from "../data/products";
 
-function ProductsScreen({ navigation }) {
-    const handlePress = () => {
-        navigation.navigate('ProductDetail')
+function ProductsScreen({ navigation, route }) {
+    
+    const filteredProducts = PRODUCTS.filter(item => item.category === route.params.categoryId)
+
+    const handlePress = (item) => {
+        navigation.navigate('ProductDetail', {
+            name: item.name,
+            productId: item.id
+        })
     }
+
+    const renderItem = ({ item }) => (
+        <ProductItem
+            item={item}
+            onSelected={handlePress}
+            colors={route.params.color}
+        />
+    )
 
     return (
         <View style={styles.screen} >
-            <Text>
-                Products Screen
-            </Text>
-            <Button 
-                onPress={handlePress}
-                title="Ir a detalle de producto"
+            <FlatList 
+                data={filteredProducts}
+                renderItem={renderItem}
             />
         </View>
     )

@@ -7,6 +7,8 @@ function CategoriesScreen({ navigation }) {
     const handlePress = (item) => {
         navigation.navigate('Products', {
             name: item.title,
+            categoryId: item.id,
+            color: item.color
         })
     }
 
