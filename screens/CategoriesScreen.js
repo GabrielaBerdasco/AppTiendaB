@@ -1,14 +1,18 @@
 import React from "react";
 import { FlatList } from "react-native";
+import { useSelector, useDispatch } from "react-redux"
 import GridItems from "../components/GridItems";
-import { CATEGORIES } from "../data/categories"
+
+import { selectCategory } from "../store/actions/category.action"
 
 function CategoriesScreen({ navigation }) {
+    const categories = useSelector( state => state.categories.list)
+    const dispatch = useDispatch()
+
     const handlePress = (item) => {
+        dispatch(selectCategory(item.id))
         navigation.navigate('Products', {
-            name: item.title,
-            categoryId: item.id,
-            color: item.color
+            name: item.title
         })
     }
 
@@ -21,7 +25,7 @@ function CategoriesScreen({ navigation }) {
 
     return (
         <FlatList 
-            data={CATEGORIES} 
+            data={categories} 
             keyExtractor={item => item.id}
             renderItem={renderItem}    
         />

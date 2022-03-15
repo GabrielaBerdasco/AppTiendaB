@@ -22,9 +22,6 @@ function ShopNavigator() {
                 name="Categories" 
                 component={CategoriesScreen} 
                 options={{
-                    headerTitleStyle: {
-                        color: '#fffbdb',
-                    },
                     title: 'Tienda B',
                 }}
             />

@@ -20,7 +20,6 @@ const GridItems = ({ item, onSelected }) => {
 const styles = StyleSheet.create({
     gridItem:{
         flex: 1,
-        borderRadius: 5,
         margin: 15,
         height: 150,
     },

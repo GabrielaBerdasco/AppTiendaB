@@ -1,11 +1,17 @@
-import React from "react";
-import ProductItem from "../components/ProductItem";
+import React, { useEffect, useState } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { PRODUCTS } from "../data/products";
+import { useSelector } from "react-redux";
+import ProductItem from "../components/ProductItem";
 
-function ProductsScreen({ navigation, route }) {
+function ProductsScreen({ navigation }) {
+    const products = useSelector(state => state.products.list)
+    const selectedCategory = useSelector(state => state.categories.selected)
     
-    const filteredProducts = PRODUCTS.filter(item => item.category === route.params.categoryId)
+    const [filteredProducts, setFilteredProducts] = useState([])
+
+    useEffect(() => {
+        setFilteredProducts(products.filter(item => item.category === selectedCategory.id))
+    }, [selectedCategory])
 
     const handlePress = (item) => {
         navigation.navigate('ProductDetail', {
@@ -18,7 +24,6 @@ function ProductsScreen({ navigation, route }) {
         <ProductItem
             item={item}
             onSelected={handlePress}
-            colors={route.params.color}
         />
     )
 

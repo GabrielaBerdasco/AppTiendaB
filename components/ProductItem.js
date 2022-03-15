@@ -2,10 +2,10 @@ import React from "react"
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
 import { Colors } from "../constants/Colors"
 
-const ProductItem = ({ item, onSelected, colors }) => {
+const ProductItem = ({ item, onSelected }) => {
     return (
         <TouchableOpacity onPress={() => onSelected(item)}>
-            <View style={{ ...styles.productItem, backgroundColor: colors}}>
+            <View style={styles.productItem}>
                 <View>
                     <Text style={styles.title}>{item.name}</Text>
                 </View>
@@ -22,12 +22,13 @@ const styles = StyleSheet.create({
     productItem: {
         padding: 20,
         margin: 10,
-        borderRadius: 3
+        borderRadius: 5,
+        backgroundColor: Colors.textColor
     },
     title: {
         fontSize: 22,
         fontWeight: "bold",
-        color: Colors.textColor
+        color: Colors.accent
     },
     details: {
         fontSize: 18,
