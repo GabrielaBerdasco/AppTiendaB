@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductItem from "../components/ProductItem";
+import { selectProduct } from "../store/actions/products.action";
 
 function ProductsScreen({ navigation }) {
+    const dispatch = useDispatch()
     const products = useSelector(state => state.products.list)
     const selectedCategory = useSelector(state => state.categories.selected)
     
@@ -14,9 +16,9 @@ function ProductsScreen({ navigation }) {
     }, [selectedCategory])
 
     const handlePress = (item) => {
+        dispatch(selectProduct(item.id))
         navigation.navigate('ProductDetail', {
             name: item.name,
-            productId: item.id
         })
     }
 

@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-import { useRoute } from "@react-navigation/native"
-import { PRODUCTS } from "../data/products"
+import { useSelector } from "react-redux";
+/* import { useRoute } from "@react-navigation/native"
+import { PRODUCTS } from "../data/products" */
 import { Colors } from "../constants/Colors"
 
 function ProductDetailScreen({ navigation }) {
-    const route = useRoute()
-    const product = PRODUCTS.find(item => item.id === route.params.productId)
+    /* const route = useRoute() */
+    /* const products = useSelector(state => state.products.list) */
+    const product = useSelector(state => state.products.selected)
 
+    const [selectedProduct, setSelectedProduct] = useState([])
+    
+    useEffect(() => {
+        setSelectedProduct(product)
+    }, [product])
     const handlePress = () => {
         navigation.navigate('Categories')
     }
@@ -15,10 +22,10 @@ function ProductDetailScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.info}>
-                <Text style={styles.title}>{product.name}</Text>
-                <Text>{product.description}</Text>
-                <Text>$ {product.price}</Text>
-                <Text>{product.weight}</Text>
+                <Text style={styles.title}>{selectedProduct.name}</Text>
+                <Text>{selectedProduct.description}</Text>
+                <Text>$ {selectedProduct.price}</Text>
+                <Text>{selectedProduct.weight}</Text>
             </View>
             <Button 
                 onPress={handlePress}

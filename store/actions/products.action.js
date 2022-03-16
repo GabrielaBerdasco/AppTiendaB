@@ -4,3 +4,4 @@ export const selectProduct = (id) => ({
     type: SELECT_PRODUCT,
     productId: id,
 })
+
