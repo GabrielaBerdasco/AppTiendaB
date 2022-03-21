@@ -1,9 +1,10 @@
 import React from "react"
 import { View, StyleSheet } from "react-native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { FontAwesome } from "@expo/vector-icons"
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons"
 import ShopNavigator from "./ShopNavigator"
 import CartNavigator from "./CartNavigator"
+import OrderNavigator from "./OrderNavigator"
 import { Colors } from "../constants/Colors"
 
 const Tab = createBottomTabNavigator()
@@ -41,6 +42,21 @@ function TabNavigator() {
                         <View>
                             <FontAwesome 
                                 name="shopping-cart" 
+                                size={focused ? 34 : 24} 
+                                color={focused ? Colors.accent : Colors.primary} 
+                            />
+                        </View>
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name="Tienda B Orders" 
+                component={OrderNavigator}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <MaterialCommunityIcons 
+                                name="playlist-star" 
                                 size={focused ? 34 : 24} 
                                 color={focused ? Colors.accent : Colors.primary} 
                             />

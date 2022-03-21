@@ -1,12 +1,18 @@
 import React from "react"
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
+import { useDispatch } from "react-redux"
 import CartItem from "../components/CartItem"
-import { Colors } from "../constants/Colors"
 import { CART } from "../data/cart"
+import { confirmCart } from "../store/actions/cart.action"
+import { Colors } from "../constants/Colors"
 
 function CartScreen() {
+    const dispatch = useDispatch()
+
     const handlerDeleteItem = (id) => {}
-    const handlerConfirmCart = () => {}
+    const handlerConfirmCart = () => {
+        dispatch(confirmCart(CART, 2300))
+    }
 
     const renderItem = (data) => (
         <CartItem item={data.item} onDelete={handlerDeleteItem} />
