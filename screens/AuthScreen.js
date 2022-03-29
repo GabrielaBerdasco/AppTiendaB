@@ -44,7 +44,7 @@ function AuthScreen() {
             />
             <View style={styles.prompt}>
                 <TouchableOpacity onPress={handleSignUp} >
-                <Text style={styles.promptButton}>REGISTRARSE</Text>
+                    <Text style={styles.promptButton}>REGISTRARSE</Text>
                 </TouchableOpacity>
                 <Text style={styles.promptMessage}>{message}</Text>
                 <TouchableOpacity>

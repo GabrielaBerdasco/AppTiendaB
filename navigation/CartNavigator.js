@@ -2,6 +2,8 @@ import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { StyleSheet } from "react-native"
 import CartScreen from "../screens/CartScreen"
+import LocationSelector from "../components/LocationSelector"
+
 import { Colors } from "../constants/Colors"
 
 const Stack = createNativeStackNavigator()
@@ -22,6 +24,16 @@ function CartNavigator() {
                         color: '#fffbdb',
                     },
                     title: 'Carro de compras',
+                }}
+            />
+            <Stack.Screen 
+                name="Location" 
+                component={LocationSelector} 
+                options={{
+                    headerTitleStyle: {
+                        color: '#fffbdb',
+                    },
+                    title: 'Ubicación',
                 }}
             />
         </Stack.Navigator>

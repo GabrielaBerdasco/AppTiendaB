@@ -6,12 +6,13 @@ import { CART } from "../data/cart"
 import { confirmCart } from "../store/actions/cart.action"
 import { Colors } from "../constants/Colors"
 
-function CartScreen() {
+function CartScreen({ navigation }) {
     const dispatch = useDispatch()
 
     const handlerDeleteItem = (id) => {}
     const handlerConfirmCart = () => {
         dispatch(confirmCart(CART, 2300))
+        navigation.navigate('Location')
     }
 
     const renderItem = (data) => (

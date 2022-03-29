@@ -4,6 +4,7 @@ import { Colors } from "../constants/Colors";
 
 
 const OrderItems = ({ item }) => {
+    
     return (
         <View style={styles.orderItem}>
             <Text style={styles.title}>Orden n° {item.id}</Text>

@@ -10,12 +10,11 @@ export const confirmCart = (payload, total) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    date: Date.now(),
+                    date: Date.now().toString(),
                     items: payload,
                     total: total,
                 })
             })
-
             const result = await response.json()
             console.log(result);
             

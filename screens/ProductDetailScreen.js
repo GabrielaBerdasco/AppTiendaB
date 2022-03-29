@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { useSelector } from "react-redux";
-/* import { useRoute } from "@react-navigation/native"
-import { PRODUCTS } from "../data/products" */
+
 import { Colors } from "../constants/Colors"
 
 function ProductDetailScreen({ navigation }) {
-    /* const route = useRoute() */
-    /* const products = useSelector(state => state.products.list) */
     const product = useSelector(state => state.products.selected)
 
     const [selectedProduct, setSelectedProduct] = useState([])

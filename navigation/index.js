@@ -10,10 +10,11 @@ function MainNavigator() {
 
     return (
         <NavigationContainer>
-            {isAuthenticated
+            {/* {isAuthenticated
                 ? <TabNavigator />
                 : <AuthNavigator />
-            }
+            } */}
+            <TabNavigator />
         </NavigationContainer>
     )
 }
