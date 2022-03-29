@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import Input from "../components/Input";
 import { Colors } from "../constants/Colors";
@@ -29,7 +29,6 @@ function AuthScreen() {
             <Text style={styles.title}>{title}</Text>
             <Input 
                 label='Email'
-                style={styles.input}
                 onInputChange={handleInputChange}
                 keyboardType= 'email-address'
                 autoCapitalize= 'none'
@@ -37,7 +36,6 @@ function AuthScreen() {
             />
             <Input
                 label='Contraseña'
-                style={styles.input}
                 onInputChange={handleInputChange}
                 secureTextEntry
                 required 

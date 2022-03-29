@@ -1,4 +1,5 @@
 import { SIGNUP_API_URL } from "../../constants/Database";
+
 export const SIGN_UP = "SIGN_UP"
 
 export const signUp = (email, password) => {
@@ -26,8 +27,7 @@ export const signUp = (email, password) => {
         } catch (error) {
             console.log(error.message);
             dispatch({
-                type: CONFIRM_CART,
-                confirm: false,
+                type: SIGN_UP,
                 error: error.message
             })
         }
