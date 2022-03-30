@@ -1,18 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
 import { useDispatch } from "react-redux"
 import CartItem from "../components/CartItem"
 import { CART } from "../data/cart"
 import { confirmCart } from "../store/actions/cart.action"
 import { Colors } from "../constants/Colors"
+import LocationSelector from "../components/LocationSelector"
 
 function CartScreen({ navigation }) {
+    const [location, setLocation] = useState()
     const dispatch = useDispatch()
 
     const handlerDeleteItem = (id) => {}
     const handlerConfirmCart = () => {
-        dispatch(confirmCart(CART, 2300))
-        navigation.navigate('Location')
+        dispatch(confirmCart(CART, 2300, location))
+        navigation.navigate('ConfirmationScreen')
     }
 
     const renderItem = (data) => (
@@ -28,6 +30,7 @@ function CartScreen({ navigation }) {
                     renderItem={renderItem}
                 />
             </View>
+            <LocationSelector onLocationSelected={setLocation}/>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
                     <Text style={styles.text}>Confirmar</Text>

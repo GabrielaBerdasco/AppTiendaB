@@ -2,7 +2,7 @@ import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { StyleSheet } from "react-native"
 import CartScreen from "../screens/CartScreen"
-import LocationSelector from "../components/LocationSelector"
+import ConfirmationScreen from "../screens/ConfirmationScreen"
 
 import { Colors } from "../constants/Colors"
 
@@ -27,13 +27,13 @@ function CartNavigator() {
                 }}
             />
             <Stack.Screen 
-                name="Location" 
-                component={LocationSelector} 
+                name="ConfirmationScreen" 
+                component={ConfirmationScreen} 
                 options={{
                     headerTitleStyle: {
                         color: '#fffbdb',
                     },
-                    title: 'Ubicación',
+                    title: 'Compra exitosa',
                 }}
             />
         </Stack.Navigator>

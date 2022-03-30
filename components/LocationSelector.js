@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { View, Text, Button, StyleSheet, Alert } from "react-native"
 import * as Location from "expo-location"
+import MapPreview from "./MapPreview"
 
 import { Colors } from "../constants/Colors"
 
-function LocationSelector() {
+function LocationSelector({ onLocationSelected }) {
     const [pickedLocation, setPickedLocation] = useState()
     
     const handleGetLocation = async () => {
@@ -20,7 +21,7 @@ function LocationSelector() {
             lng: location.coords.longitude
         })
 
-        props.onLocation({
+        onLocationSelected({
             lat: location.coords.latitude,
             lng: location.coords.longitude
         })
@@ -42,12 +43,10 @@ function LocationSelector() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.preview}>
-                {pickedLocation
-                    ? <Text>{pickedLocation.lat}, {pickedLocation.lng}</Text>
-                    : <Text>Esperando ubicación...</Text>
-                }
-            </View>
+            <MapPreview location={pickedLocation} style={styles.preview}>
+                <Text>Esperando ubicación...</Text>
+            </MapPreview>
+            
             <Button 
                 title="Obtener ubicación"
                 color={Colors.accent}

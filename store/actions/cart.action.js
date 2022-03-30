@@ -2,7 +2,7 @@
 import { API_URL } from "../../constants/Database"
 export const CONFIRM_CART = 'CONFIRM_CART'
 
-export const confirmCart = (payload, total) => {
+export const confirmCart = (payload, total, location) => {
     return async dispatch => {
         try {
             const response = await fetch(`${API_URL}/ordenDeCompra.json`, {
@@ -14,6 +14,10 @@ export const confirmCart = (payload, total) => {
                     date: Date.now().toString(),
                     items: payload,
                     total: total,
+                    location: {
+                        lat: location.lat,
+                        lng: location.lng,
+                    },
                 })
             })
             const result = await response.json()
