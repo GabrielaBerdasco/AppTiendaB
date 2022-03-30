@@ -1,2 +1,0 @@
-export const API_URL = "https://tienda-bonachona-default-rtdb.firebaseio.com/"
-export const SIGNUP_API_URL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAvV5r6cCWbqOdiiOtya-M9GgtrvF-UTyc"
