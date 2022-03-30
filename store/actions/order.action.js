@@ -1,5 +1,5 @@
-/* import { API_URL } from "@env" */
-import { API_URL } from "../../constants/Database"
+import { API_URL } from "@env"
+
 
 export const GET_ORDERS = 'GET_ORDERS'
 

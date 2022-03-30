@@ -1,4 +1,4 @@
-import { SIGNUP_API_URL } from "../../constants/Database";
+import { SIGNUP_API_URL } from "@env";
 
 export const SIGN_UP = "SIGN_UP"
 

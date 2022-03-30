@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import MAP from "../constants/Map";
+import { API_KEY } from "@env";
 
 function MapPreview({ location, style, children }) {
     const mapPreviewUrl = location
-    ? `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=14&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${location.lat},${location.lng}&key=${MAP.API_KEY}`
+    ? `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=14&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${location.lat},${location.lng}&key=${API_KEY}`
     : '';
     
     return (
