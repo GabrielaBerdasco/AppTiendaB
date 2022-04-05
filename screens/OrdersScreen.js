@@ -4,23 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import OrderItems from "../components/OrderItems"
 import { Colors } from "../constants/Colors";
 
-import { getOrders } from "../store/actions/order.action";
+import { getOrders, persistentOrders } from "../store/actions/order.action";
 
 const OrdersScreen = () => {
     const orders = useSelector(state => state.orders.list)
     const dispatch = useDispatch()
 
     useEffect(() =>{
-        dispatch(getOrders())
+        dispatch(persistentOrders())
     }, [])
 
-    const renderItem =({ item }) => (
+    /* const renderItem =({ item }) => (
         <OrderItems item={item} />
-    )
-        console.log(orders);
+    ) */
+    	
     return (
         <View style={styles.container}>
-            {orders ? (
+        {/* {orders ? (
             <FlatList 
                 data={orders} 
                 keyExtractor={item => item.id}
@@ -29,7 +29,7 @@ const OrdersScreen = () => {
             ) : (
                 <Text>Cargando...</Text>
             )
-        }
+        } */}
         </View>
     )
 }

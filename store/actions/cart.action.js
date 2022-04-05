@@ -1,9 +1,11 @@
 import { API_URL } from "@env"
+import { insertOrders } from "../../db"
 
 export const CONFIRM_CART = 'CONFIRM_CART'
 
 export const confirmCart = (payload, total, location) => {
     return async dispatch => {
+        const date = new Date().toLocaleDateString()
         try {
             const response = await fetch(`${API_URL}/ordenDeCompra.json`, {
                 method:'POST',
@@ -11,7 +13,7 @@ export const confirmCart = (payload, total, location) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    date: Date.now().toString(),
+                    date: date,
                     items: payload,
                     total: total,
                     location: {
@@ -20,9 +22,17 @@ export const confirmCart = (payload, total, location) => {
                     },
                 })
             })
-            const result = await response.json()
-            console.log(result);
+            const data = await response.json()
             
+            const result = await insertOrders(
+                date,
+                total,
+                location.lat,
+                location.lng
+            )
+            
+            console.log(result);
+
             dispatch({
                 type: CONFIRM_CART,
                 confirm: true,

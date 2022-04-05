@@ -1,6 +1,6 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { StyleSheet } from "react-native"
+import { Platform, StyleSheet } from "react-native"
 import OrdersScreen from "../screens/OrdersScreen"
 import { Colors } from "../constants/Colors"
 

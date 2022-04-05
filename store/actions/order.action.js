@@ -1,7 +1,8 @@
 import { API_URL } from "@env"
-
+import { loadOrders } from "../../db"
 
 export const GET_ORDERS = 'GET_ORDERS'
+export const LOAD_ORDERS = 'LOAD_ORDERS'
 
 export const getOrders = () => {
     return async dispatch => {
@@ -33,6 +34,21 @@ export const getOrders = () => {
                 type: GET_ORDERS,
                 status: 'error'
             })
+        }
+    }
+}
+
+export const persistentOrders = () => {
+    return async dispatch => {
+        try {
+            const result = await loadOrders()
+            
+            dispatch({
+                type: LOAD_ORDERS,
+                payload: result.rows._array,
+            }) 
+        } catch(error) {
+            throw error
         }
     }
 }

@@ -1,4 +1,4 @@
-import { GET_ORDERS } from "../actions/order.action";
+import { GET_ORDERS, LOAD_ORDERS } from "../actions/order.action";
 
 const INITIAL_STATE ={
     list: [],
@@ -7,6 +7,11 @@ const INITIAL_STATE ={
 const OrderReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GET_ORDERS:
+            return {
+                ...state,
+                list: action.payload,
+            }
+        case LOAD_ORDERS:
             return {
                 ...state,
                 list: action.payload,
