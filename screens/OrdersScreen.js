@@ -14,13 +14,13 @@ const OrdersScreen = () => {
         dispatch(persistentOrders())
     }, [])
 
-    /* const renderItem =({ item }) => (
+    const renderItem =({ item }) => (
         <OrderItems item={item} />
-    ) */
+    )
     	
     return (
         <View style={styles.container}>
-        {/* {orders ? (
+        {orders ? (
             <FlatList 
                 data={orders} 
                 keyExtractor={item => item.id}
@@ -29,7 +29,7 @@ const OrdersScreen = () => {
             ) : (
                 <Text>Cargando...</Text>
             )
-        } */}
+        }
         </View>
     )
 }

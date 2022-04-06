@@ -42,10 +42,10 @@ export const persistentOrders = () => {
     return async dispatch => {
         try {
             const result = await loadOrders()
-            
+            const orders = result.rows._array
             dispatch({
                 type: LOAD_ORDERS,
-                payload: result.rows._array,
+                payload: orders,
             }) 
         } catch(error) {
             throw error

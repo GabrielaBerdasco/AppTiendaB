@@ -9,7 +9,7 @@ const OrderItems = ({ item }) => {
         <View style={styles.orderItem}>
             <Text style={styles.title}>Orden n° {item.id}</Text>
             <Text style={styles.content}>Fecha: {item.date}</Text>
-            <Text style={styles.content}>Producto: {item.items[0].name}</Text>
+            <Text style={styles.content}>Entrega: {item.lat} {item.lng}</Text>
             <Text style={styles.content}>Total: {item.total}</Text>
         </View>
     )
