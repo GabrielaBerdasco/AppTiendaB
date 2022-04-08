@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../store/actions/items.action"
 
 import { Colors } from "../constants/Colors"
 
 function ProductDetailScreen({ navigation }) {
     const product = useSelector(state => state.products.selected)
+    const dispatch = useDispatch()
 
     const [selectedProduct, setSelectedProduct] = useState([])
     
     useEffect(() => {
         setSelectedProduct(product)
     }, [product])
-    const handlePress = () => {
+
+    const handleAddItem = () => {
+        dispatch(addItem(product))
         navigation.navigate('Categories')
     }
 
@@ -25,9 +29,9 @@ function ProductDetailScreen({ navigation }) {
                 <Text>{selectedProduct.weight}</Text>
             </View>
             <Button 
-                onPress={handlePress}
-                title="Ir a categorias"
-                color={Colors.primary}
+                onPress={handleAddItem}
+                title="Agregar producto"
+                color={Colors.accent}
             />
         </View>
     )

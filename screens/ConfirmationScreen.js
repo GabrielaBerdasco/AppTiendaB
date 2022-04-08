@@ -1,17 +1,24 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { confirmRemove } from "../store/actions/items.action";
 import { Colors } from "../constants/Colors";
 
 function ConfirmationScreen({ navigation }) {
+    const dispatch = useDispatch();
 
     const handlePress = () => {
-        navigation.navigate('Categories')
+        dispatch(confirmRemove())
+        navigation.navigate('Cart')
     }
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Pedido realizado correctamente</Text>
-            <Text style={styles.text}>Gracias por su compra</Text>
-            <Button title="Volver a la tienda" onPress={handlePress} color={Colors.accent} />
+            <Text style={styles.text}>¿Desea eliminar el producto seleccionado?</Text>
+            <Button 
+                title="Eliminar" 
+                onPress={handlePress} 
+                color={Colors.accent} 
+            />
         </View>
     );
 }

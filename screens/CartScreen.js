@@ -1,44 +1,64 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import CartItem from "../components/CartItem"
-import { CART } from "../data/cart"
-import { confirmCart } from "../store/actions/cart.action"
-import { Colors } from "../constants/Colors"
 import LocationSelector from "../components/LocationSelector"
+import { confirmCart } from "../store/actions/cart.action"
+import { removeItem } from "../store/actions/items.action"
+import { Colors } from "../constants/Colors"
 
 function CartScreen({ navigation }) {
     const [location, setLocation] = useState()
-    const dispatch = useDispatch()
+    const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0)
 
-    const handlerDeleteItem = (id) => {}
-    const handlerConfirmCart = () => {
-        dispatch(confirmCart(CART, 2300, location))
+    const dispatch = useDispatch()
+    const products = useSelector(state => state.items)
+    
+    useEffect(() => {
+        setCart(products.items)
+        setTotal(cart.reduce((acc, item) => acc + item.price, 0))
+    }, [products, cart])
+    
+    const handlerDeleteItem = (id) => {
+        dispatch(removeItem(id))
         navigation.navigate('ConfirmationScreen')
     }
+    
+    const handlerConfirmCart = () => {
+        if(!location) { 
+            alert('Seleccione una ubicación')
+            return 
+        } else {
+        dispatch(confirmCart(cart, total, location))
+        alert('Pedido realizado')
+        }
+    }
 
-    const renderItem = (data) => (
-        <CartItem item={data.item} onDelete={handlerDeleteItem} />
+    const renderItem = ({ item }) => (
+        <CartItem item={item} onDelete={handlerDeleteItem} />
     )
 
     return (
         <View style={styles.container}>
             <View style={styles.list}>
                 <FlatList
-                    data={CART}
+                    data={cart}
                     keyExtractor={item => item.id}
                     renderItem={renderItem}
                 />
             </View>
             <LocationSelector onLocationSelected={setLocation}/>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
-                    <Text style={styles.text}>Confirmar</Text>
-                    <View style={styles.total}>
-                        <Text style={styles.text}>Total</Text>
-                        <Text style={styles.text}>$552</Text>
-                    </View>
-                </TouchableOpacity>
+                {cart.length > 0 && (
+                    <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
+                        <Text style={styles.text}>Confirmar</Text>
+                        <View style={styles.total}>
+                            <Text style={styles.text}>Total</Text>
+                            <Text style={styles.text}>$ {total}</Text>
+                        </View>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     )

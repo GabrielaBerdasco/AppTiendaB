@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Colors } from '../constants/Colors';
 
 
 function CartItem ({ item, onDelete }) {
-    
+      
   return (
     <View style={styles.item}>
       <View>
