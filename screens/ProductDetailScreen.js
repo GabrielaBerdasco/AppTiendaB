@@ -6,8 +6,9 @@ import { addItem } from "../store/actions/items.action"
 import { Colors } from "../constants/Colors"
 
 function ProductDetailScreen({ navigation }) {
-    const product = useSelector(state => state.products.selected)
     const dispatch = useDispatch()
+    const product = useSelector(state => state.products.selected)
+    const cartStatus = useSelector(state => state.cart.status);
 
     const [selectedProduct, setSelectedProduct] = useState([])
     
@@ -16,8 +17,10 @@ function ProductDetailScreen({ navigation }) {
     }, [product])
 
     const handleAddItem = () => {
-        dispatch(addItem(product))
-        navigation.navigate('Categories')
+        if(cartStatus !== 'loading') {
+            dispatch(addItem(product))
+            navigation.navigate('Categories')
+        }
     }
 
     return (

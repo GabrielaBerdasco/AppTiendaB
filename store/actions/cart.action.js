@@ -7,6 +7,11 @@ export const confirmCart = (payload, total, location) => {
     return async dispatch => {
         const date = new Date().toLocaleDateString()
         try {
+            dispatch({
+                type: CONFIRM_CART,
+                status: 'loading'
+            })
+
             const response = await fetch(`${API_URL}/ordenDeCompra.json`, {
                 method:'POST',
                 headers: {
@@ -30,19 +35,19 @@ export const confirmCart = (payload, total, location) => {
                 location.lat,
                 location.lng
             )
-            
-            console.log(result);
 
             dispatch({
                 type: CONFIRM_CART,
                 confirm: true,
+                status: 'success'
             })
+            
         } catch (error) {
             console.log(error.message);
             dispatch({
                 type: CONFIRM_CART,
-                confirm: false,
-                error: error.message
+                error: error.message,
+                status: 'error'
             })
         }
     }

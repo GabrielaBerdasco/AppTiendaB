@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native"
 import { useSelector, useDispatch } from "react-redux"
 import CartItem from "../components/CartItem"
 import LocationSelector from "../components/LocationSelector"
@@ -11,14 +11,23 @@ function CartScreen({ navigation }) {
     const [location, setLocation] = useState()
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)
+    const [loading, setLoading] = useState(false)
 
     const dispatch = useDispatch()
     const products = useSelector(state => state.items)
+    const status = useSelector(state => state.cart.status)
     
     useEffect(() => {
         setCart(products.items)
         setTotal(cart.reduce((acc, item) => acc + item.price, 0))
-    }, [products, cart])
+        
+        if(status === 'loading') {
+            setLoading(true)
+        } else {
+            setLoading(false)
+        }
+
+    }, [products, cart, status])
     
     const handlerDeleteItem = (id) => {
         dispatch(removeItem(id))
@@ -30,8 +39,7 @@ function CartScreen({ navigation }) {
             alert('Seleccione una ubicación')
             return 
         } else {
-        dispatch(confirmCart(cart, total, location))
-        alert('Pedido realizado')
+            dispatch(confirmCart(cart, total, location))
         }
     }
 
@@ -50,15 +58,20 @@ function CartScreen({ navigation }) {
             </View>
             <LocationSelector onLocationSelected={setLocation}/>
             <View style={styles.footer}>
-                {cart.length > 0 && (
-                    <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
-                        <Text style={styles.text}>Confirmar</Text>
-                        <View style={styles.total}>
-                            <Text style={styles.text}>Total</Text>
-                            <Text style={styles.text}>$ {total}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
+                {loading 
+                    ? <ActivityIndicator size="large" color={Colors.primary} /> 
+                    : (
+                        cart.length > 0 && (
+                            <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
+                                <Text style={styles.text}>Confirmar</Text>
+                                <View style={styles.total}>
+                                    <Text style={styles.text}>Total</Text>
+                                    <Text style={styles.text}>$ {total}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    )
+                }
             </View>
         </View>
     )

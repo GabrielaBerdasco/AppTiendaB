@@ -1,5 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, CONFIRM_REMOVE } from "../actions/items.action";
-import { CONFIRM_CART } from "../actions/cart.action";
+import { ADD_ITEM, REMOVE_ITEM, CONFIRM_REMOVE, REMOVE_ALL_ITEMS } from "../actions/items.action";
 
 const initialState = {
     items: [],
@@ -40,10 +39,11 @@ const ItemsReducer = (state = initialState, action) => {
                 items: state.items.filter(item => item.id !== state.selected.id),
                 selected: null
             };
-        case CONFIRM_CART:
+        case REMOVE_ALL_ITEMS:
             return {
                 ...state,
-                items: []
+                items: [],
+                selected: null
             };
         default:
             return state;
