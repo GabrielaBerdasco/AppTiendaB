@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     mapPreview: {
         justifyContent: "center",
         alignItems: "center",
+        borderRadius: 10,
     },
     mapImage: {
         width: "100%",

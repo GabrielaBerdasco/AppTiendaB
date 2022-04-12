@@ -44,7 +44,7 @@ function LocationSelector({ onLocationSelected }) {
     return (
         <View style={styles.container}>
             <MapPreview location={pickedLocation} style={styles.preview}>
-                <Text>Esperando ubicación...</Text>
+                <Text>Seleccionar domicilio de entrega...</Text>
             </MapPreview>
             
             <Button 

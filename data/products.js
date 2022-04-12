@@ -2,7 +2,7 @@ export const PRODUCTS = [
     {
         id: "1",
         image: "https://dl.dropboxusercontent.com/s/ig08109teihkjv1/YerberaNegra.jpeg?dl=0",
-        name: "Yerbera", 
+        name: "Yerbera negra", 
         description: "Yerbera con pico vertedor grande, flores fondo negro.", 
         price: 1116, 
         stock: 2, 
@@ -29,7 +29,7 @@ export const PRODUCTS = [
     {
         id: "4", 
         image: "https://dl.dropboxusercontent.com/s/cs8y8w1766s6ool/YerberaRosa.jpeg?dl=0",
-        name: "Yerbera", 
+        name: "Yerbera rosa", 
         description: "Yerbera con pico vertedor grande, modelo flores rosa.", 
         price: 1116, 
         stock: 12, 

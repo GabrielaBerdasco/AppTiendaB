@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OrderItems from "../components/OrderItems"
 import { Colors } from "../constants/Colors";
 
-import { getOrders, persistentOrders } from "../store/actions/order.action";
+import { persistentOrders } from "../store/actions/order.action";
 
 const OrdersScreen = () => {
     const orders = useSelector(state => state.orders.list)

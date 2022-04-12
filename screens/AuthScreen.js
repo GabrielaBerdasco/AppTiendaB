@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import Input from "../components/Input";
-import { Colors } from "../constants/Colors";
 import { signUp } from "../store/actions/auth.action"
+import { Colors } from "../constants/Colors";
 
 function AuthScreen() {
     const dispatch = useDispatch()
@@ -11,6 +11,8 @@ function AuthScreen() {
     const [password, setPassword] = useState('')
 
     const handleSignUp =() => {
+        console.log('sign up');
+        console.log('email:' + email, 'contraseña' + password);
         dispatch(signUp(email, password))
     }
 
@@ -21,7 +23,8 @@ function AuthScreen() {
 
     const handleInputChange = (id, value, isValid) => {
         if(id === 'email') setEmail(value)
-        if (id === 'password') setPassword(isValid)
+        if(id === 'password') setPassword(isValid)
+        console.log(id, password, isValid);
     }
 
     return (

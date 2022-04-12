@@ -32,13 +32,14 @@ function Input({ label, required, onInputChange, id, ...props}) {
     })
 
     useEffect(() => {
+        let id = label.toLowerCase()
         onInputChange(id, inputState.value, inputState.isValid)
     }, [inputState])
     
     const handleChangeText = (text) => {
         let isValid = true
 
-        if (props.required && text.trim().length === 0) isValid = false
+        if (required && text.trim().length === 0) isValid = false
 
         inputDispatch({
             type: INPUT_CHANGE,

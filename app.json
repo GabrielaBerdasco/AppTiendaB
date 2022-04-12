@@ -20,9 +20,20 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.coderhouse.appTienda",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDDXXDSFPKD_Mzc0LTB-SRCdpQI3HXDZdU"
+        }
       }
     },
     "web": {

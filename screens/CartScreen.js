@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native"
 import { useSelector, useDispatch } from "react-redux"
+
 import CartItem from "../components/CartItem"
 import LocationSelector from "../components/LocationSelector"
+
 import { confirmCart } from "../store/actions/cart.action"
 import { removeItem } from "../store/actions/items.action"
+
 import { Colors } from "../constants/Colors"
 
 function CartScreen({ navigation }) {
@@ -35,12 +38,7 @@ function CartScreen({ navigation }) {
     }
     
     const handlerConfirmCart = () => {
-        if(!location) { 
-            alert('Seleccione una ubicación')
-            return 
-        } else {
-            dispatch(confirmCart(cart, total, location))
-        }
+        dispatch(confirmCart(cart, total, location))
     }
 
     const renderItem = ({ item }) => (
@@ -61,7 +59,7 @@ function CartScreen({ navigation }) {
                 {loading 
                     ? <ActivityIndicator size="large" color={Colors.primary} /> 
                     : (
-                        cart.length > 0 && (
+                        cart.length > 0 && location && (
                             <TouchableOpacity style={styles.confirm} onPress={handlerConfirmCart}>
                                 <Text style={styles.text}>Confirmar</Text>
                                 <View style={styles.total}>

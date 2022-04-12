@@ -22,6 +22,7 @@ function CartNavigator() {
                 options={{
                     headerTitleStyle: {
                         color: '#fffbdb',
+                        fontFamily: "SourceSerifBold",
                     },
                     title: 'Carro de compras',
                 }}
@@ -45,7 +46,6 @@ const styles = StyleSheet.create({
         backgroundColor: Platform.OS === 'ios' ? '' : Colors.accent,
     },
     headerTitle: {
-        fontWeight: 'bold',
         fontSize: 20,
         color: Colors.textColor
     }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Snackbar } from 'react-native-paper';
 import { removeAllItems } from '../store/actions/items.action';
@@ -19,14 +19,6 @@ function AlertContainer() {
     useEffect(() => {
         if(cartStatus === 'success') {
             setVisible(true);
-            /* Alert.alert('Pedido realizado', 'Gracias por su compra', [
-                {
-                    text: 'OK',
-                    onPress: () => {
-                        dispatch(removeAllItems())
-                    }
-                }
-            ]) */
         }
     }, [cartStatus])
 

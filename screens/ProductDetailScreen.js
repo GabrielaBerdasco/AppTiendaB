@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, Image } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../store/actions/items.action"
 
@@ -25,6 +25,12 @@ function ProductDetailScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image
+                    source={{ uri: selectedProduct.image }}
+                    style={styles.image}
+                />
+            </View>
             <View style={styles.info}>
                 <Text style={styles.title}>{selectedProduct.name}</Text>
                 <Text>{selectedProduct.description}</Text>
@@ -45,7 +51,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start'
+    },
+    imageContainer: {
+        width: '90%',
+        height: 300,
+        marginVertical: 40,
+        borderRadius: 10,
+        overflow: 'hidden',
+    },
+    image: {
+        width: '100%',
+        height: '100%',
     },
     info: {
         alignItems: 'center',
@@ -54,6 +71,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
+        fontFamily: "SourceSerifRegular",
         color: Colors.accent,
         marginBottom: 10,
     }

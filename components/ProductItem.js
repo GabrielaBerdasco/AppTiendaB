@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 22,
-        fontWeight: "bold",
+        fontFamily: "SourceSerifBold",
         color: Colors.accent
     },
     details: {

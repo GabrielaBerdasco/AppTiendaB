@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
         padding: 8,
     },
     title:{
-        fontSize: 20,
+        fontSize: 25,
+        fontFamily: "SourceSerifRegular",
         color: Colors.textColor,
         textAlign: 'justify'
     }

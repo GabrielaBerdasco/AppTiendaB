@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: Platform.OS === 'ios' ? '' : Colors.accent,
     },
     headerTitle: {
-        fontWeight: 'bold',
+        fontFamily: "SourceSerifBold",
         fontSize: 20,
         color: Colors.textColor
     }

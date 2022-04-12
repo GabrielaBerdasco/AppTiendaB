@@ -1,4 +1,4 @@
-import { API_URL } from "@env"
+import { API_URL, API_KEY } from "@env"
 import { insertOrders } from "../../db"
 
 export const CONFIRM_CART = 'CONFIRM_CART'
@@ -11,6 +11,8 @@ export const confirmCart = (payload, total, location) => {
                 type: CONFIRM_CART,
                 status: 'loading'
             })
+
+            const adressResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${API_KEY}`)
 
             const response = await fetch(`${API_URL}/ordenDeCompra.json`, {
                 method:'POST',
@@ -27,13 +29,16 @@ export const confirmCart = (payload, total, location) => {
                     },
                 })
             })
+
+            const adressData = await adressResponse.json()
+            const adress = adressData['results'][0]['formatted_address']
+
             const data = await response.json()
             
             const result = await insertOrders(
                 date,
                 total,
-                location.lat,
-                location.lng
+                adress
             )
 
             dispatch({
